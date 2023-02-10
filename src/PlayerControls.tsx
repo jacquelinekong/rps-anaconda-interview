@@ -15,3 +15,26 @@ export const PlayerControls = (props: PlayerControlsProps): JSX.Element => {
     </div>
   );
 };
+
+type RockPaperScissors = "Rock" | "Paper" | "Scissors";
+const winnerToLoser: Record<RockPaperScissors, RockPaperScissors> = {
+  Rock: "Scissors",
+  Paper: "Rock",
+  Scissors: "Paper",
+};
+export const determineWinner = (
+  entry1: RockPaperScissors,
+  entry2: RockPaperScissors
+): RockPaperScissors => {
+  // Tie
+  if (entry1 === entry2) {
+    return entry1;
+  }
+
+  // Not a tie, so there must be a winner
+  if (winnerToLoser[entry1] === entry2) {
+    return entry1;
+  } else {
+    return entry2;
+  }
+};
