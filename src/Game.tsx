@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { PlayerControls } from "./PlayerControls";
+
+import PlayerScoreboard, { GameState } from "./PlayerScoreboard";
+import { SaveButton } from "./SaveButton";
 
 function Game() {
   const [player1Score, setplayer1Score] = useState(0);
@@ -33,49 +37,5 @@ function Game() {
     </div>
   );
 }
-
-export interface GameState {
-  player1Score: number;
-  player2Score: number;
-}
-
-export const PlayerScoreboard = (props: GameState): JSX.Element => {
-  return (
-    <div>
-      <p>Player 1 Score: {props.player1Score}</p>
-      <p>Player 2 Score: {props.player2Score}</p>
-    </div>
-  );
-};
-
-interface PlayerControlsProps {
-  playerName: string;
-  incrementScore: () => void;
-}
-
-export const PlayerControls = (props: PlayerControlsProps): JSX.Element => {
-  return (
-    <div>
-      <button onClick={props.incrementScore}>
-        Increase {props.playerName} Score
-      </button>
-    </div>
-  );
-};
-
-// Sends the current game state to the API when clicked
-export const SaveButton = (props: GameState): JSX.Element => {
-  return (
-    <div>
-      <button
-        onClick={() =>
-          fetch("/game", { method: "POST", body: JSON.stringify(props) })
-        }
-      >
-        Save
-      </button>
-    </div>
-  );
-};
 
 export default Game;

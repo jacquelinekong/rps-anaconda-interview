@@ -10,7 +10,10 @@ In the project directory, you can run:
 
 To install dependencies, run `pip3 install -r requirements.txt` and `npm install`.
 
-`npm start` Runs the app in the development mode.\
+To run:
+`flask --app api run`
+`npm start`
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `npm test`

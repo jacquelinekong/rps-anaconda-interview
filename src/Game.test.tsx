@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Game, { GameState, PlayerScoreboard } from "./Game";
+import Game from "./Game";
 
 test("renders title", () => {
   render(<Game />);
@@ -43,16 +43,4 @@ test("clicking buttons increases player scores", () => {
   expect(p2InitialScore).toBeNull();
   const p2NewScore = screen.getByText(/Player 2 Score: 1/i);
   expect(p2NewScore).toBeInTheDocument();
-});
-
-test("PlayerScoreboard renders scores", () => {
-  const testProps: GameState = {
-    player1Score: 4,
-    player2Score: 0,
-  };
-  render(<PlayerScoreboard {...testProps} />);
-  const p1Score = screen.getByText(/Player 1 Score: 4/i);
-  const p2Score = screen.getByText(/Player 2 Score: 0/i);
-  expect(p1Score).toBeInTheDocument();
-  expect(p2Score).toBeInTheDocument();
 });
