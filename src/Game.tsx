@@ -1,8 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Game() {
   const [player1Score, setplayer1Score] = useState(0);
   const [player2Score, setplayer2Score] = useState(0);
+
+  // Load the game state after the component first mounts
+  useEffect(() => {
+    fetch("/game", { method: "GET" })
+      .then((res) => res.json())
+      .then((gameState: GameState) => {
+        setplayer1Score(gameState.player1Score);
+        setplayer2Score(gameState.player2Score);
+      });
+  }, []);
 
   return (
     <div>
@@ -59,7 +69,7 @@ export const SaveButton = (props: GameState): JSX.Element => {
     <div>
       <button
         onClick={() =>
-          fetch("/save", { method: "POST", body: JSON.stringify(props) })
+          fetch("/game", { method: "POST", body: JSON.stringify(props) })
         }
       >
         Save
