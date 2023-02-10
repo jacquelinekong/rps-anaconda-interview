@@ -19,6 +19,7 @@ function Game() {
         playerName="Player 2"
         incrementScore={() => setplayer2Score(player2Score + 1)}
       />
+      <SaveButton player1Score={player1Score} player2Score={player2Score} />
     </div>
   );
 }
@@ -47,6 +48,21 @@ export const PlayerControls = (props: PlayerControlsProps): JSX.Element => {
     <div>
       <button onClick={props.incrementScore}>
         Increase {props.playerName} Score
+      </button>
+    </div>
+  );
+};
+
+// Sends the current game state to the API when clicked
+export const SaveButton = (props: GameState): JSX.Element => {
+  return (
+    <div>
+      <button
+        onClick={() =>
+          fetch("/save", { method: "POST", body: JSON.stringify(props) })
+        }
+      >
+        Save
       </button>
     </div>
   );
