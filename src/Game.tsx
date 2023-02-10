@@ -12,9 +12,11 @@ function Game() {
         player2Score={player2Score}
       />
       <PlayerControls
+        playerName="Player 1"
         incrementScore={() => setplayer1Score(player1Score + 1)}
       />
       <PlayerControls
+        playerName="Player 2"
         incrementScore={() => setplayer2Score(player2Score + 1)}
       />
     </div>
@@ -35,12 +37,17 @@ export const PlayerScoreboard = (props: GameState): JSX.Element => {
   );
 };
 
-export const PlayerControls = (props: {
+interface PlayerControlsProps {
+  playerName: string;
   incrementScore: () => void;
-}): JSX.Element => {
+}
+
+export const PlayerControls = (props: PlayerControlsProps): JSX.Element => {
   return (
     <div>
-      <button onClick={props.incrementScore}>Increase Score</button>
+      <button onClick={props.incrementScore}>
+        Increase {props.playerName} Score
+      </button>
     </div>
   );
 };
