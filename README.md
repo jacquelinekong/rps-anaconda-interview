@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ### How to run
 
 To install dependencies, run `pip3 install -r requirements.txt` and `npm install`.
