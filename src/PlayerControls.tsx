@@ -1,22 +1,29 @@
 // This component encapsulates the buttons that the player presses to play
 // the game (i.e., rock, paper, scissors)
 
-interface PlayerControlsProps {
+export interface PlayerControlsProps {
   playerName: string;
-  incrementScore: () => void;
+  choice: string;
+  setChoice: (choice: string) => void;
 }
 
 export const PlayerControls = (props: PlayerControlsProps): JSX.Element => {
   return (
     <div>
-      <button onClick={props.incrementScore}>
-        Increase {props.playerName} Score
-      </button>
+      <p>{props.playerName}, choose:</p>
+      <button onClick={() => props.setChoice("Rock")}>Rock</button>
+      <button onClick={() => props.setChoice("Paper")}>Paper</button>
+      <button onClick={() => props.setChoice("Scissors")}>Scissors</button>
+      {props.choice !== "" && (
+        <p>
+          {props.playerName} Choice: {props.choice}
+        </p>
+      )}
     </div>
   );
 };
 
-type RockPaperScissors = "Rock" | "Paper" | "Scissors";
+export type RockPaperScissors = "Rock" | "Paper" | "Scissors";
 const winnerToLoser: Record<RockPaperScissors, RockPaperScissors> = {
   Rock: "Scissors",
   Paper: "Rock",
