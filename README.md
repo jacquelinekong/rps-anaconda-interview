@@ -1,9 +1,11 @@
 ### How to run
 
-To install dependencies, run `pip3 install -r requirements.txt` and `npm install`.
+To install dependencies, run\
+`pip3 install -r requirements.txt`\
+`npm install`.
 
-To run:
-`flask --app api run`
+To run:\
+`flask --app api run`\
 `npm start`
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
